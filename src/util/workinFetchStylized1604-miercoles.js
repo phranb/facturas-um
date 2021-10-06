@@ -1,4 +1,3 @@
-import { setBlockTracking } from "@vue/runtime-core";
 import React, { useEffect, useState } from "react";
 
 export const PostRequestF = () => {
@@ -83,13 +82,7 @@ export const PostRequestF = () => {
         </div>
       </form>
       <div>
-        <div className="columns">
-          <div className="column">Numero de factura </div>
-          <div className="column">Fecha de imputación</div>
-          <div className="column">Fecha de vencimiento</div>
-          <div className="column">Monto</div>
-        </div>
-        <div className="">
+        <div className="container is-12">
           {facturas.length &&
             facturas
               .filter(
@@ -98,14 +91,13 @@ export const PostRequestF = () => {
                   facturas.mes_anio_imputacion <= fechaTop
               )
               .map((factura) => (
-                <div key={factura.id} className="columns">
-                  <li className="column">{factura.numero_factura}</li>
+                <div key={factura.id} className="">
+                  <li title="num">{factura.numero_factura}</li>
 
-                  <li className="column">{factura.mes_anio_imputacion}</li>
+                  <li title="mes a">{factura.mes_anio_imputacion}</li>
+                  <li title="estado">{factura.estado}</li>
 
-                  <li className="column">{factura.estado}</li>
-
-                  <li className="column">{factura.total}</li>
+                  <li title="total">{factura.total}</li>
                 </div>
               ))}
         </div>

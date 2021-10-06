@@ -24,13 +24,18 @@
   color: white;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .force {
-  color: #000 !important
+  color: #fff !important
 }
 
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {
