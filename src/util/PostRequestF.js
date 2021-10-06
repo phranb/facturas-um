@@ -51,7 +51,7 @@ export const PostRequestF = () => {
   };
 
   return (
-    <div className="container box mt-6 has-background-light">
+    <div className="app-border container box has-background-light ">
       <form onSubmit={handleSubmit}>
         <div>
           <div className="hero title">
