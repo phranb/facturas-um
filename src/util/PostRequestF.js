@@ -51,14 +51,14 @@ export const PostRequestF = () => {
   };
 
   return (
-    <div>
+    <div className="container box mt-6 has-background-light">
       <form onSubmit={handleSubmit}>
-        <div className="container box mt-6 has-background-light">
+        <div>
           <div className="hero title">
             <h1 className="title mt-4">Filtro SGI - Factura Compra</h1>
           </div>
           <div className="tile is-ancestor">
-            <div className="tile is-parent is-vertical is-6">
+            <div className="tile is-parent is-vertical is-12">
               <div className="tile is-child box">
                 <p>Año y Mes de imputación (start):</p>
                 <input
@@ -67,7 +67,7 @@ export const PostRequestF = () => {
                   onChange={handleChange}></input>
               </div>
             </div>
-            <div className="tile is-parent is-vertical is-6">
+            {/* <div className="tile is-parent is-vertical is-6">
               <div className="tile is-child box">
                 <p>Año y Mes de imputación (end):</p>
                 <input
@@ -75,37 +75,40 @@ export const PostRequestF = () => {
                   type="month"
                   onChange={handleChangeTop}></input>
               </div>
-            </div>
+            </div> */}
           </div>
-          <button className="button is-large" type="submit">
+          <button className="button is-large mt-6 mb-6" type="submit">
             Filtrar
           </button>
         </div>
       </form>
       <div>
-        <div className="columns">
-          <div className="column">Numero de factura </div>
-          <div className="column">Fecha de imputación</div>
-          <div className="column">Fecha de vencimiento</div>
-          <div className="column">Monto</div>
+        <div className="hero">
+          <div className="columns box has-background-white m-1">
+            <div className="column subtitle m-auto">Numero de factura </div>
+            <div className="column subtitle m-auto">Fecha de imputación</div>
+            <div className="column subtitle m-auto">Estado</div>
+            <div className="column subtitle m-auto">Monto</div>
+          </div>
         </div>
-        <div className="">
+        <div className="mt-2">
           {facturas.length &&
             facturas
               .filter(
-                (facturas) =>
-                  facturas.mes_anio_imputacion >= fecha &&
-                  facturas.mes_anio_imputacion <= fechaTop
+                (facturas) => facturas.mes_anio_imputacion >= fecha
+                // && facturas.mes_anio_imputacion <= fechaTop
               )
               .map((factura) => (
-                <div key={factura.id} className="columns">
-                  <li className="column">{factura.numero_factura}</li>
+                <div key={factura.id} className="columns  m-1">
+                  <div className="column m-auto">{factura.numero_factura}</div>
 
-                  <li className="column">{factura.mes_anio_imputacion}</li>
+                  <div className="column m-auto">
+                    {factura.mes_anio_imputacion}
+                  </div>
 
-                  <li className="column">{factura.estado}</li>
+                  <div className="column m-auto">{factura.estado}</div>
 
-                  <li className="column">{factura.total}</li>
+                  <div className="column m-auto">{factura.total}</div>
                 </div>
               ))}
         </div>
