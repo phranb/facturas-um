@@ -7,10 +7,6 @@ export const FiltroFacturaCompra = () => {
   const [myField, setMyField] = useState("");
   const [myFieldFactura, setMyFieldFactura] = useState("");
 
-  let today = new Date();
-  let formatedToday =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-
   useEffect(() => {
     const url = "http://apisgi.umbot.com.ar/v1/fc/filter";
     const headers = {
