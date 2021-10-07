@@ -1,6 +1,5 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { PostRequest } from "./util/PostRequest";
 import { FiltroFacturaCompra } from "./components/FiltroFacturaCompra";
 
 function App() {
