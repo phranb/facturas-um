@@ -13,14 +13,14 @@
   }
 }
 
-body {
-  background: rgb(212, 236, 255)
+/* body {
+  background: rgb(212, 255, 246)
 }
 
 .app-border {
-  border: 1px solid #41d9ff !important;
+  border: 1px solid #41ffd0 !important;
   box-shadow: #41d9ff3a 0px 0px 10px 0px;
-}
+} */
 
 
 .App-header {
@@ -55,4 +55,12 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.force-panel {
+  border-bottom: 1px solid #ededed !important;
+}
+
+.force-overflow {
+  overflow-y: hidden !important;
 }

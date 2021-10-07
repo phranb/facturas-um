@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { MainDatePicker } from "../components/MainDatePicker";
 
-export const PostRequestF = () => {
+export const FiltroFacturaCompra = () => {
   const [facturas, setFacturas] = useState({});
-  const [fecha, setFecha] = useState(Date());
+  const [date, setDate] = useState(Date());
+  const [numeroFactura, setNumeroFactura] = useState("");
+  const [myField, setMyField] = useState("");
+  const [myFieldFactura, setMyFieldFactura] = useState("");
 
-  let myfield;
-  let myfieldTop;
   let today = new Date();
-  let todaysDate =
+  let formatedToday =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const PostRequestF = () => {
     };
     const body = {
       field: "mes_anio_imputacion",
-      value: fecha,
+      value: date,
     };
     const fetchData = async () => {
       try {
@@ -32,16 +32,22 @@ export const PostRequestF = () => {
       }
     };
     fetchData();
-  }, [fecha]);
+  }, [date]);
 
-  const handleChange = (e) => {
+  const handleDateChange = (e) => {
     e.preventDefault();
-    myfield = e.target.value;
+    setMyField(e.target.value);
+  };
+
+  const handleIpuntChange = (e) => {
+    e.preventDefault();
+    setMyFieldFactura(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFecha(myfield);
+    setDate(myField);
+    setNumeroFactura(myFieldFactura);
   };
 
   return (
@@ -52,21 +58,33 @@ export const PostRequestF = () => {
             <h1 className="title mt-4">Filtro SGI - Factura Compra</h1>
           </div>
           <div className="tile is-ancestor mb-2">
-            <div className="tile is-parent is-vertical is-5">
+            <div className="tile is-parent is-vertical is-3">
               <div className="tile is-child box">
-                <p>Año y Mes de imputación (start):</p>
+                <p>Año y Mes de imputación</p>
                 <input
                   className="input"
                   type="month"
-                  onChange={handleChange}></input>
+                  onChange={handleDateChange}></input>
               </div>
             </div>
-            <div className="tile is-parent is-vertical is-5">
+            <div className="tile is-parent is-vertical is-3">
               <div className="tile is-child box">
                 <p>Tipo de comprobante:</p>
+                <div className="select">
+                  <select>
+                    <option>Comprobante 1</option>
+                    <option>Comprobante 2</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <div className="tile is-parent is-vertical is-2">
+            <div className="tile is-parent is-vertical is-3">
+              <div className="tile is-child box">
+                <p>Numero de factura</p>
+                <input className="input" onChange={handleIpuntChange}></input>
+              </div>
+            </div>
+            <div className="tile is-parent is-vertical is-3">
               <div className="tile is-child box">
                 <button className="button is-medium m-2" type="submit">
                   Filtrar
@@ -102,9 +120,11 @@ export const PostRequestF = () => {
           facturas
             .filter(
               (facturas) =>
-                facturas.mes_anio_imputacion >= fecha &&
-                facturas.mes_anio_imputacion <= todaysDate
-              // && facturas.mes_anio_imputacion <= fechaTop
+                (facturas.mes_anio_imputacion.substring(0, 7) === date &&
+                  numeroFactura === "") ||
+                (facturas.numero_factura === numeroFactura &&
+                  facturas.mes_anio_imputacion.substring(0, 7) === date) ||
+                (myField === "" && facturas.numero_factura === numeroFactura)
             )
             .map((factura) => (
               <div key={factura.id} className="columns  m-1">
@@ -113,7 +133,7 @@ export const PostRequestF = () => {
                 </div>
 
                 <div className="column m-auto panel-block force-overflow">
-                  {factura.mes_anio_imputacion}
+                  {factura.mes_anio_imputacion.substring(0, 7)}
                 </div>
 
                 <div className="column m-auto panel-block">
@@ -121,7 +141,7 @@ export const PostRequestF = () => {
                 </div>
 
                 <div className="column m-auto panel-block force-panel">
-                  <span>{factura.total}</span>
+                  {factura.total}
                 </div>
               </div>
             ))}

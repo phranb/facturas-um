@@ -1,13 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { PostRequest } from "./util/PostRequest";
-import { PostRequestF } from "./util/PostRequestF";
+import { FiltroFacturaCompra } from "./components/FiltroFacturaCompra";
 
 function App() {
   return (
-    <div className="App pt-6">
+    <div className="App">
       {/* <PostRequest /> */}
-      <PostRequestF />
+      <FiltroFacturaCompra />
       <img src={logo} className="App-logo" alt="logo" />
       <p>
         Edit <code>src/App.js</code> and save to reload.
