@@ -5,7 +5,6 @@ import { FiltroFacturaCompra } from "./components/FiltroFacturaCompra";
 function App() {
   return (
     <div className="App">
-      {/* <PostRequest /> */}
       <FiltroFacturaCompra />
       <img src={logo} className="App-logo" alt="logo" />
       <p>
