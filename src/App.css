@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+/* .alternate-colors div:not(.is-selected):nth-child(even) {
+  background-color: #e3fffe !important;
+} */
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -57,4 +61,8 @@
 .hide {
   display: none !important;
 
+}
+
+.number-table-head {
+  background-color: #e3fffe !important;
 }

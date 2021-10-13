@@ -29,7 +29,12 @@ export const MostrarFacturas = (props) => {
             )
             .map((factura) => (
               <div key={factura.id} className="columns m-1">
-                <div className="column m-auto panel-block">
+                <div
+                  className={
+                    isMobile
+                      ? "column m-auto panel-block number-table-head"
+                      : "column m-auto panel-block"
+                  }>
                   <span id="numeroFactura" className="has-text-weight-bold">
                     <span
                       className={
@@ -73,7 +78,7 @@ export const MostrarFacturas = (props) => {
                   {factura.estado}
                 </div>
 
-                <div className="column m-auto panel-block force-panel ">
+                <div className="column m-auto panel-block force-panel">
                   <span
                     className={
                       isMobile
