@@ -39,7 +39,10 @@ export const MenuBar = (props) => {
           <div className="tile is-parent is-vertical is-3">
             <div className="tile is-child box">
               <p>Numero de factura</p>
-              <input className="input" onChange={handleInputChange}></input>
+              <input
+                className="input"
+                placeholder="0000-00000000"
+                onChange={handleInputChange}></input>
             </div>
           </div>
           <div className="tile is-parent is-vertical is-3">

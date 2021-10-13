@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export const Notifications = (found) => {
+export const Notifications = () => {
+  const [message] = useState("No se encontraron resultados.");
+
   useEffect(() => {}, []);
 
   return (
-    <div>
-      <h1>Not found</h1>
-    </div>
+    <>
+      <div className="notification is-warning is-light">
+        <span>{message}</span>
+      </div>
+    </>
   );
 };
