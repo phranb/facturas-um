@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MostrarFacturas } from "./MostrarFacturas";
 import { MenuBar } from "./MenuBar";
 
-export const FiltroFacturaCompra = () => {
+export const FiltroFacturaCompra = (props) => {
   const [facturas, setFacturas] = useState({});
   const [date, setDate] = useState(Date());
   const [numeroFactura, setNumeroFactura] = useState("");
@@ -10,6 +10,8 @@ export const FiltroFacturaCompra = () => {
   const [myFieldFactura, setMyFieldFactura] = useState("");
   const [loading, setLoading] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
+
+  const { isMobile } = props;
 
   const loadingClass = "is-loading";
 
@@ -106,6 +108,7 @@ export const FiltroFacturaCompra = () => {
           numeroFactura={numeroFactura}
           myField={myField}
           myFieldFactura={myFieldFactura}
+          isMobile={isMobile}
         />
       </div>
     </div>
