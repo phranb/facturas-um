@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Notifications } from "./Notifications";
 import { MostrarFacturas } from "./MostrarFacturas";
 import { MenuBar } from "./MenuBar";
 
@@ -41,6 +40,10 @@ export const FiltroFacturaCompra = () => {
 
   const handleLoading = (bool) => {
     setLoading(bool);
+    const timer = setTimeout(() => {
+      setLoading(false);
+      clearTimeout(timer);
+    }, 1000);
   };
 
   const handleDateChange = (e) => {
@@ -61,7 +64,7 @@ export const FiltroFacturaCompra = () => {
     e.preventDefault();
     setDate(myField);
     setNumeroFactura(myFieldFactura);
-    setLoading(true);
+    handleLoading(true);
   };
 
   return (
@@ -74,6 +77,7 @@ export const FiltroFacturaCompra = () => {
         loading={loading}
         loadingClass={loadingClass}
       />
+
       <div>
         <div className="panel is-primary">
           <div className="columns panel-heading">
@@ -102,12 +106,7 @@ export const FiltroFacturaCompra = () => {
           numeroFactura={numeroFactura}
           myField={myField}
           myFieldFactura={myFieldFactura}
-          handleDateChange={handleDateChange}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          handleLoading={handleLoading}
         />
-        <Notifications />
       </div>
     </div>
   );
