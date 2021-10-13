@@ -53,3 +53,8 @@
 .force-overflow {
   overflow-y: hidden !important;
 }
+
+.hide {
+  display: none !important;
+
+}
